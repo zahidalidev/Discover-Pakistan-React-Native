@@ -1,0 +1,6 @@
+export const SET_LOADER_STATUS = "SET_LOADER_STATUS";
+export const SET_LOGIN_STATUS = "SET_LOGIN_STATUS"; 
+export const SET_USER_DATA = "SET_USER_DATA";
+export const SET_CATEGORY_DATA = "SET_CATEGORY_DATA";
+export const SET_CATEGORY = "SET_CATEGORY";
+export const SET_CART_LIST = "SET_CART_LIST";
