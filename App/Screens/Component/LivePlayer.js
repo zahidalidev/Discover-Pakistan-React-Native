@@ -30,6 +30,7 @@ import SettingsIcon from "./../../Assets/player_icons/Settings-24px.svg";
 import FullScreenIcon from "./../../Assets/player_icons/Full_Screen-24px.svg";
 import DefaultViewIcon from "./../../Assets/player_icons/Default_View-24px.svg";
 import LiveRedIcon from "./../../Assets/player_icons/Live-24px.svg";
+import { Platform } from "react-native";
 
 class LivePlayer extends React.Component {
   _isMounted = false;
@@ -79,6 +80,7 @@ class LivePlayer extends React.Component {
     }
   }
 
+
   render() {
     const {
       source,
@@ -95,6 +97,7 @@ class LivePlayer extends React.Component {
     // console.log(this.videoRef)
 
     return (
+
       <>
         <Row style={styles.playerRow}>
           <Video
@@ -121,13 +124,18 @@ class LivePlayer extends React.Component {
             isLooping={isLooping ? isLooping : false}
             style={styles.playerStyle}
 
-          // onFullscreenUpdate={async () => {
-          //   await ScreenOrientation.lockAsync(
-          //     this.state.orientationIsLandscape ? ScreenOrientation.OrientationLock.PORTRAIT :
-          //       ScreenOrientation.OrientationLock.LANDSCAPE,
-          //   );
-          //   this.setState({ orientationIsLandscape: !orientationIsLandscape });
-          // }}
+            onFullscreenUpdate={async () => {
+              // ScreenOrientation.addOrientationChangeListener((event) => {
+              //   console.log("orientation changed: ", event.orientationInfo.orientation);
+              // }
+              // );
+
+              await ScreenOrientation.lockAsync(
+                this.state.orientationIsLandscape ? ScreenOrientation.OrientationLock.LANDSCAPE :
+                  ScreenOrientation.OrientationLock.PORTRAIT,
+              );
+              this.setState({ orientationIsLandscape: !this.state.orientationIsLandscape });
+            }}
 
           />
 
